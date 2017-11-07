@@ -8,12 +8,8 @@
                 <table class="layui-table">
                     <tbody>
                     <tr>
-                        <td>Krcmf.Admin 版本</td>
+                        <td>RP.Admin 版本</td>
                         <td>1.00</td>
-                    </tr>
-                    <tr>
-                        <td>Krcmf 版本</td>
-                        <td>{$Think.const.THINK_VERSION}</td>
                     </tr>
                     <tr>
                         <td>服务器操作系统</td>
@@ -25,7 +21,7 @@
                     </tr>
                     <tr>
                         <td>MySQL数据库版本</td>
-                        <td></td>
+                        <td>{$mysql_ver}</td>
                     </tr>
                     <tr>
                         <td>运行PHP版本</td>
@@ -50,40 +46,22 @@
                     <tbody>
                     <tr>
                         <td>系统名称</td>
-                        <td>{$system.name}</td>
+                        <td>{$Think.config.name}</td>
                     </tr>
                     <tr>
                         <td>产品研发团队</td>
-                        <td>{$system.team}</td>
-                    </tr>
-                    <tr>
-                        <td>产品DEMO体验</td>
-                        <td>
-                            <a target="_blank" href="{$system.demo}">{$system.demo}</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>BUG反馈</td>
-                        <td>
-                            <a target="_blank" href="{$system.bug}">{$system.bug}</a>
-                        </td>
+                        <td>{$Think.config.team}</td>
                     </tr>
                     <tr>
                         <td>项目地址</td>
                         <td>
-                            <a target="_blank" href="{$system.project}">{$system.project}</a>
+                            <a target="_blank" href="{$Think.config.project}">{$Think.config.project}</a>
                         </td>
                     </tr>
                     <tr>
-                        <td>公司官网</td>
+                        <td>住址</td>
                         <td>
-                            <a target="_blank" href=" {$system.company_site}">{$system.company_site}</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>公司地址</td>
-                        <td>
-                            {$system.company_address}
+                            {$Think.config.company_address}
                         </td>
                     </tr>
                     </tbody>

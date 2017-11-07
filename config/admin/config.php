@@ -7,13 +7,10 @@
  */
 
 return [
-    'name' => '公司首页数字化管理服务平台',
-    'team' => '四川科瑞软件有限责任公司',
-    'demo' => 'http://www.imelai.com',
-    'bug' => 'https://coding.net/u/inroam/p/police/topic',
-    'project' => 'https://git.coding.net/inroam/police.git',
-    'company_site' => 'http://www.keywaysoft.com',
-    'company_address' => '四川省 绵阳市 科创区 九洲大道257号',
+    'name' => '任鹏个人网站',
+    'team' => '任鹏Team',
+    'project' => 'https://github.com/RPmorning/renpeng.git',
+    'company_address' => '四川省 绵阳市 游仙区 紫金城',
 
     // 服务器信息
     'server_information' => [
