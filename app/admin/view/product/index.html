@@ -1,0 +1,22 @@
+{extend name="public/base" /}
+{block name="main-container"}
+<product class="main-product">
+    <div class="layui-tab" lay-filter="product">
+        <ul class="layui-tab-title">
+            <li class="layui-this">产品列表</li>
+            <li>添加产品</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show pt10" id="product-list">
+                {include file="product/list" /}
+            </div>
+            <div class="layui-tab-item">
+                {include file="product/create" /}
+            </div>
+        </div>
+    </div>
+</product>
+{/block}
+{block name="page-script"}
+{js href="__LIB__/ueditor/ueditor.config.js, __LIB__/ueditor/ueditor.all.min.js" /}
+{/block}

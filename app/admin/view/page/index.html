@@ -1,0 +1,22 @@
+{extend name="public/base" /}
+{block name="main-container"}
+<page class="main-page">
+    <div class="layui-tab" lay-filter="page">
+        <ul class="layui-tab-title">
+            <li class="layui-this">专题列表</li>
+            <li>添加专题</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show pt10" id="page-list">
+                {include file="page/list" /}
+            </div>
+            <div class="layui-tab-item">
+                {include file="page/create" /}
+            </div>
+        </div>
+    </div>
+</page>
+{/block}
+{block name="page-script"}
+{js href="__LIB__/ueditor/ueditor.config.js, __LIB__/ueditor/ueditor.all.min.js" /}
+{/block}
