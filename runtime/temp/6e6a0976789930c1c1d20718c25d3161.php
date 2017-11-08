@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\index\index.html";i:1510033779;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\base.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\header.html";i:1510031103;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\menu.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\footer.html";i:1510024745;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\index\index.html";i:1510033779;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\base.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\header.html";i:1510124867;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\menu.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\footer.html";i:1510024745;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -19,7 +19,7 @@
         <?php if($controller == 'passport'): else: ?>
         <!-- Page Header Start -->
         <div id="kr-header" class="pf w clearfix">
-    <a class="logo show f20 tc fl" href="<?php echo url('index'); ?>">RENPRNG.ADMIN</a>
+    <a class="logo show f20 tc fl" href="<?php echo url('index'); ?>">RENPENG.ADMIN</a>
     <div class="header-nav clearfix">
         <div class="nav-menu fl">
             <a class="layui-nav-item" href="<?php echo url('/admin/index'); ?>" target="_self">

@@ -9,6 +9,7 @@ namespace app\admin\controller;
 
 use app\common\controller\Common;
 use app\common\service\Member;
+use think\Hook;
 
 class Passport extends Common
 {
@@ -41,7 +42,9 @@ class Passport extends Common
                 break;
             case -2 : $this->error("登录失败，密码错误", url('login'));
                 break;
-            default : $this->success("登录成功", "index/");
+            default :
+                $this->success("登录成功", "index/");
+//                Hook::listen("member_login", $uid); $this->success("登录成功", "index/");
         }
     }
 

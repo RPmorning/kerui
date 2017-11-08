@@ -3,14 +3,73 @@ layui.use(['form'], function(){
         layer = layui.layer;
 
    form.on('submit(login)', function(data){
-        $.post("/admin/passport/dologin", data.field,  function (result) {
-            layer.msg(result.msg, {time:2000}, function () {
-                if(result.code) window.location.replace(result.url);
-            });
-        });
+       if(data.field.username == '' || data.field.username == '请输入用户名'){
+           layer.msg('请输入用户名',{time:2000},function () {
+           })
+           return false;
+       }
+       if(data.field.password == '' || data.field.password == '请输入用户名'){
+           layer.msg('请输入密码',{time:2000},function () {
+               return false;
+           })
+       }else{
+           $.post("/admin/passport/dologin", data.field,  function (result) {
+               if (result.code == 1) {
+                    console.log(11);
+                   layer.msg(result.msg, {time: 2000}, function () {
+                       window.location.replace(result.url);
+                   });
+               } else {
+                   layer.msg('用户名或密码错误，请重新输入', {time:2000}, function () {
+                       return false;
+                   });
+               }
+               // layer.msg(result.msg, {time:2000}, function () {
+               //     if(result.code) window.location.replace(result.url);
+               // });
+           });
+       }
         return false;
     });
 });
+
+// function token(uname,upwd) {
+//     var app_id="demo";
+//     var pks2="-----BEGIN PUBLIC KEY-----\n" +
+//         "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCzA+mdwLl/Y/QPy9xTVsvrNt0B\n" +
+//         "7hCVRwu+Abt3ebgQTOMy66iS/zPkl3Cx2H9lAaFl4UkaRN3hrVJ3O70fnzvTR1P7\n" +
+//         "Cx+UXyeM1IPew1YTWQtaWIxaKbYxiCpMJsZ5KDs+POFRPF6CDvf6gsCu5QwdauxF\n" +
+//         "bhBTut6ncrOYPCB3GwIDAQAB\n" +
+//         "-----END PUBLIC KEY-----";
+//
+//     //var $this = $(this);
+//     //e.preventDefault();
+//     //event.preventDefault();
+//     var username =uname;// $this.find("input[name='username']").val();
+//     var password = upwd;//$this.find("input[name='password']").val();
+//     var user = '{"username":"'+ username +'","password":"'+ password +'"}';
+//     //RSA加密
+//     var encrypt = new JSEncrypt();
+//     encrypt.setPublicKey(pks2);
+//     var encrypted = encrypt.encrypt(user);
+//     $.ajax({
+//         type: 'post',
+//         url: '/api/index/login',
+//         dataType: "json",
+//         data: {
+//             app_id: app_id,
+//             user:encrypted},
+//         success: function(data){
+//             ticket = data.data.ticket;
+//             //document.cookie="ticket=11";
+//             //document.cookie = 'name=guoqian';
+//
+//             $.cookie('ticket', ticket, { path: "/",expires: 7 });
+//             //localStorage.ticket=ticket;
+//         },
+//
+//     });
+// }
 particlesJS("particles-js", {
     "particles": {
         "number": {

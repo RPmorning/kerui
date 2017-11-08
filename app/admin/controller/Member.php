@@ -165,7 +165,7 @@ class Member extends Base
             return $this->error($result);
         }
         if($this->member->updatePassword($data)){
-            return $this->success('保存成功');
+            return $this->success('保存成功',url('passport/login'));
         }else{
             return $this->error($this->member->getError());
         }
