@@ -27,8 +27,11 @@ class Member extends MemberModel
      * @param  string  $password 用户密码
      * @return integer 登录成功-用户ID，登录失败-返回0或-1
      */
-    public function login($username, $password)
+    public function login($username, $password ,$verification)
     {
+        if(!captcha_check($verification)){
+            return -3;
+        };
         $where['username'] = $username;
         $where['status']   = 1;
         /* 获取用户数据 */

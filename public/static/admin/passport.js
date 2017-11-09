@@ -5,22 +5,24 @@ layui.use(['form'], function(){
    form.on('submit(login)', function(data){
        if(data.field.username == '' || data.field.username == '请输入用户名'){
            layer.msg('请输入用户名',{time:2000},function () {
+               return false;
            })
-           return false;
-       }
-       if(data.field.password == '' || data.field.password == '请输入用户名'){
+       }else if(data.field.password == '' || data.field.password == '请输入用户名'){
            layer.msg('请输入密码',{time:2000},function () {
                return false;
            })
-       }else{
+       }else if(data.field.verification == '' || data.field.password == '请输入验证码'){
+           layer.msg('请输入用验证码',{time:2000},function () {
+               return false;
+           })
+       } else{
            $.post("/admin/passport/dologin", data.field,  function (result) {
                if (result.code == 1) {
-                    console.log(11);
                    layer.msg(result.msg, {time: 2000}, function () {
                        window.location.replace(result.url);
                    });
                } else {
-                   layer.msg('用户名或密码错误，请重新输入', {time:2000}, function () {
+                   layer.msg(result.msg, {time:2000}, function () {
                        return false;
                    });
                }

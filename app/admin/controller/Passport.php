@@ -33,14 +33,16 @@ class Passport extends Common
      * @param string $password
      * @return \think\Response
      */
-    public function doLogin(Member $member, $username, $password)
+    public function doLogin(Member $member, $username, $password ,$verification)
     {
-        $uid = $member->login($username, $password);
+        $uid = $member->login($username, $password ,$verification);
         switch ($uid)
         {
             case -1 : $this->error("登录失败，用户不存在或被禁用", url('login'));
                 break;
             case -2 : $this->error("登录失败，密码错误", url('login'));
+                break;
+            case -3 : $this->error("登录失败，验证码错误", url('login'));
                 break;
             default :
                 $this->success("登录成功", "index/");
