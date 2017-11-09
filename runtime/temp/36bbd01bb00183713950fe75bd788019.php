@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:70:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\link\index.html";i:1510024745;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\base.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\header.html";i:1510031103;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\menu.html";i:1510024745;s:69:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\link\list.html";i:1510024745;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\link\create.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\footer.html";i:1510024745;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:70:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\link\index.html";i:1510024745;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\base.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\header.html";i:1510124867;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\menu.html";i:1510024745;s:69:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\link\list.html";i:1510211882;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\link\create.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\footer.html";i:1510024745;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -19,7 +19,7 @@
         <?php if($controller == 'passport'): else: ?>
         <!-- Page Header Start -->
         <div id="kr-header" class="pf w clearfix">
-    <a class="logo show f20 tc fl" href="<?php echo url('index'); ?>">RENPRNG.ADMIN</a>
+    <a class="logo show f20 tc fl" href="<?php echo url('index'); ?>">RENPENG.ADMIN</a>
     <div class="header-nav clearfix">
         <div class="nav-menu fl">
             <a class="layui-nav-item" href="<?php echo url('/admin/index'); ?>" target="_self">
@@ -105,6 +105,7 @@
     <tr>
         <td>链接编号</td>
         <td>链接标题</td>
+        <td>链接地址</td>
         <td>更新时间</td>
         <td>链接状态</td>
         <td>管理操作</td>
@@ -114,6 +115,7 @@
     <tr>
         <td><?php echo $link['id']; ?></td>
         <td><?php echo $link['title']; ?></td>
+        <td><a href="<?php echo $link['url']; ?> " target="_blank" style="color: #009E94"><?php echo $link['url']; ?></a></td>
         <td><?php echo $link['update_time']; ?></td>
         <td class="layui-form">
             <input type="checkbox" lay-skin="switch" lay-filter="status" lay-text="ON|OFF" data-id="<?php echo $link['id']; ?>"  value="1" <?php if($link['status'] == '1'): ?> checked<?php endif; ?>>

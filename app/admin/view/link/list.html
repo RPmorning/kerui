@@ -3,6 +3,7 @@
     <tr>
         <td>链接编号</td>
         <td>链接标题</td>
+        <td>链接地址</td>
         <td>更新时间</td>
         <td>链接状态</td>
         <td>管理操作</td>
@@ -13,6 +14,7 @@
     <tr>
         <td>{$link.id}</td>
         <td>{$link.title}</td>
+        <td><a href="{$link.url} " target="_blank" style="color: #009E94">{$link.url}</a></td>
         <td>{$link.update_time}</td>
         <td class="layui-form">
             <input type="checkbox" lay-skin="switch" lay-filter="status" lay-text="ON|OFF" data-id="{$link.id}"  value="1" {eq name="link.status" value="1"} checked{/eq}>
