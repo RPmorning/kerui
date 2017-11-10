@@ -14,7 +14,9 @@
     <tr>
         <td>{$link.id}</td>
         <td>{$link.title}</td>
-        <td><a href="{$link.url} " target="_blank" style="color: #009E94">{$link.url}</a></td>
+        {if condition = "$link.status==0"} <td>{$link.url}</td>
+        {else /} <td><a href="{$link.url} " target="_blank" style="color: #009E94">{$link.url}</a></td>
+        {/if}
         <td>{$link.update_time}</td>
         <td class="layui-form">
             <input type="checkbox" lay-skin="switch" lay-filter="status" lay-text="ON|OFF" data-id="{$link.id}"  value="1" {eq name="link.status" value="1"} checked{/eq}>

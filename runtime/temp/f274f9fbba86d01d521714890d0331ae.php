@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\article\index.html";i:1510024745;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\base.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\header.html";i:1510124867;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\menu.html";i:1510024745;s:72:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\article\list.html";i:1510024745;s:74:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\article\create.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\footer.html";i:1510024745;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\article\index.html";i:1510024745;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\base.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\header.html";i:1510124867;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\menu.html";i:1510024745;s:72:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\article\list.html";i:1510276140;s:74:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\article\create.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\footer.html";i:1510024745;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -120,6 +120,7 @@
     <tr>
         <td>文章编号</td>
         <td>文章标题</td>
+        <td>文章来源</td>
         <td>更新时间</td>
         <td>文章状态</td>
         <td>管理操作</td>
@@ -127,8 +128,9 @@
     </thead>
     <?php if(isset($articles)): if(is_array($articles) || $articles instanceof \think\Collection || $articles instanceof \think\Paginator): $i = 0; $__LIST__ = $articles;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$article): $mod = ($i % 2 );++$i;?>
     <tr>
-        <td><?php echo $article['id']; ?></td>
+        <td width="6%"><?php echo $article['id']; ?></td>
         <td><?php echo $article['name']; ?></td>
+        <td><?php echo $article['source']; ?></td>
         <td><?php echo $article['update_time']; ?></td>
         <td class="layui-form">
             <input type="checkbox" lay-skin="switch" lay-filter="status" lay-text="ON|OFF" data-id="<?php echo $article['id']; ?>"  value="1" <?php if($article['status'] == '1'): ?> checked<?php endif; ?>>

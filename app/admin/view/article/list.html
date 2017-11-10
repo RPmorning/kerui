@@ -20,6 +20,7 @@
     <tr>
         <td>文章编号</td>
         <td>文章标题</td>
+        <td>文章来源</td>
         <td>更新时间</td>
         <td>文章状态</td>
         <td>管理操作</td>
@@ -28,8 +29,9 @@
     {present name='articles'}
     {volist name='articles' id='article'}
     <tr>
-        <td>{$article.id}</td>
+        <td width="6%">{$article.id}</td>
         <td>{$article.name}</td>
+        <td>{$article.source}</td>
         <td>{$article.update_time}</td>
         <td class="layui-form">
             <input type="checkbox" lay-skin="switch" lay-filter="status" lay-text="ON|OFF" data-id="{$article.id}"  value="1" {eq name="article.status" value="1"} checked{/eq}>

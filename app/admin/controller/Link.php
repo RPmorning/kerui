@@ -91,9 +91,9 @@ class Link extends Base{
     {
         $res = $this->link->updateStatus($id, $status);
         if($res){
-            return $this->success("保存成功");
+            return $this->success("更新成功");
         }else{
-            return $this->error("保存失败");
+            return $this->error("更新失败");
         }
     }
 }

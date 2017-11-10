@@ -24,7 +24,7 @@ class Article extends Model
         /*$dateYM = date('Y-m',$update_time);
         $dateD= date('d',$update_time);
         return $dateYM.$dateD;*/
-        return date('Y-m-d',$update_time);
+        return date('Y-m-d h:i:s',$update_time);
     }
     //cover读取器
     protected function getCoverAttr($cover){

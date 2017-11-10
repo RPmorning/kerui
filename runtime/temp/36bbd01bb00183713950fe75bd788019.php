@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:70:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\link\index.html";i:1510024745;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\base.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\header.html";i:1510124867;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\menu.html";i:1510024745;s:69:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\link\list.html";i:1510211882;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\link\create.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\footer.html";i:1510024745;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:70:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\link\index.html";i:1510024745;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\base.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\header.html";i:1510124867;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\menu.html";i:1510024745;s:69:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\link\list.html";i:1510276926;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\link\create.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\footer.html";i:1510024745;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -115,7 +115,9 @@
     <tr>
         <td><?php echo $link['id']; ?></td>
         <td><?php echo $link['title']; ?></td>
-        <td><a href="<?php echo $link['url']; ?> " target="_blank" style="color: #009E94"><?php echo $link['url']; ?></a></td>
+        <?php if($link['status']==0): ?> <td><?php echo $link['url']; ?></td>
+        <?php else: ?> <td><a href="<?php echo $link['url']; ?> " target="_blank" style="color: #009E94"><?php echo $link['url']; ?></a></td>
+        <?php endif; ?>
         <td><?php echo $link['update_time']; ?></td>
         <td class="layui-form">
             <input type="checkbox" lay-skin="switch" lay-filter="status" lay-text="ON|OFF" data-id="<?php echo $link['id']; ?>"  value="1" <?php if($link['status'] == '1'): ?> checked<?php endif; ?>>

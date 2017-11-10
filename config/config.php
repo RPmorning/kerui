@@ -115,7 +115,7 @@ return [
     // 请求缓存有效期
     'request_cache_expire'   => null,
     // 全局请求缓存排除规则
-    'request_cache_except'   => [],
+    'request_cache_except'   => false,
 
     // +----------------------------------------------------------------------
     // | 模板设置

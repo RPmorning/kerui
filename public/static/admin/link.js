@@ -26,7 +26,12 @@ layui.use(['form','layedit'], function() {
             id: $(this).attr("data-id"),
             status: (data.elem.checked) ? data.value : 0
         }
-        $.getJSON(linkUrl + "status", param);
+        $.post(linkUrl + "status", param,  function (result) {
+            layer.msg(result.msg, {time:1500}, function () {
+                window.location.replace(result.url);
+            });
+        });
+
     });
 
     form.on('select(categoryFilter)', function(data){
@@ -37,8 +42,8 @@ layui.use(['form','layedit'], function() {
     form.on('submit(save)', function(data){
         data.field.cover = cover ? cover : uploadLinkSrc.attr("data-src");
         $.post(linkUrl + "save", data.field,  function (result) {
-            layer.msg(result.msg, {time:2000}, function () {
-                window.location.replace(result.url);
+            layer.msg(result.msg, {time:1500}, function () {
+                window.parent.location.reload();
             });
         });
         return false;
@@ -63,7 +68,7 @@ layui.use(['form','layedit'], function() {
             btn: ['确定','取消'] //按钮
         }, function(){
             $.getJSON(linkUrl + "delete/id/" + id, function (result) {
-                layer.msg(result.msg, {time:2000}, function () {
+                layer.msg(result.msg, {time:1500}, function () {
                     if(result.code) window.location.replace(result.url);
                 });
             });
