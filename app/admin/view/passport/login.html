@@ -16,7 +16,9 @@
                 <div class="layui-form-item">
                     <input type="verification" name="verification" lay-verify="verification" placeholder="请输入验证码" class="layui-input">
                 </div>
-                <div align="center">{:captcha_img()}</div>
+                <div><img id="verify_img" src="{:captcha_src()}" alt="验证码">
+                    <a href="javascript:refreshVerify()">点击刷新</a></div>
+
                 <div class="layui-form-item">
                     <button class="layui-btn" lay-submit lay-filter="login">登录</button>
                 </div>
@@ -31,5 +33,11 @@
     var bg = $("#particles-js").attr("data-bg");
     bg = bg.replace(/\\/g, "/");
     $("#particles-js").css("background-image","url(" + bg + ")");
+</script>
+<script>
+    function refreshVerify() {
+        var ts = Date.parse(new Date())/1000;
+        $('#verify_img').attr("src", "/captcha?id="+ts);
+    }
 </script>
 {/block}

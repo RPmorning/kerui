@@ -2,6 +2,7 @@ layui.use(['form'], function(){
     var form = layui.form(),
         layer = layui.layer;
 
+
    form.on('submit(login)', function(data){
        if(data.field.username == '' || data.field.username == '请输入用户名'){
            layer.msg('请输入用户名',{time:2000},function () {
@@ -11,7 +12,7 @@ layui.use(['form'], function(){
            layer.msg('请输入密码',{time:2000},function () {
                return false;
            })
-       }else if(data.field.verification == '' || data.field.password == '请输入验证码'){
+       }else if(data.field.verification == '' || data.field.verification == '请输入验证码'){
            layer.msg('请输入用验证码',{time:2000},function () {
                return false;
            })
@@ -34,6 +35,7 @@ layui.use(['form'], function(){
         return false;
     });
 });
+
 
 // function token(uname,upwd) {
 //     var app_id="demo";

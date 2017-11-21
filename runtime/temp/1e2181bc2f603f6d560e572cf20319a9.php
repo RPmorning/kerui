@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:74:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\passport\login.html";i:1510216296;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\base.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\header.html";i:1510124867;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\menu.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\footer.html";i:1510024745;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:74:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\passport\login.html";i:1511253444;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\base.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\header.html";i:1510124867;s:71:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\menu.html";i:1510024745;s:73:"D:\phpStudy\WWW\phpRP\renpeng\public/../app/admin\view\public\footer.html";i:1510024745;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -34,7 +34,9 @@
                 <div class="layui-form-item">
                     <input type="verification" name="verification" lay-verify="verification" placeholder="请输入验证码" class="layui-input">
                 </div>
-                <div align="center"><?php echo captcha_img(); ?></div>
+                <div><img id="verify_img" src="<?php echo captcha_src(); ?>" alt="验证码">
+                    <a href="javascript:refreshVerify()">点击刷新</a></div>
+
                 <div class="layui-form-item">
                     <button class="layui-btn" lay-submit lay-filter="login">登录</button>
                 </div>
@@ -145,6 +147,12 @@
     var bg = $("#particles-js").attr("data-bg");
     bg = bg.replace(/\\/g, "/");
     $("#particles-js").css("background-image","url(" + bg + ")");
+</script>
+<script>
+    function refreshVerify() {
+        var ts = Date.parse(new Date())/1000;
+        $('#verify_img').attr("src", "/captcha?id="+ts);
+    }
 </script>
 
     <script src="__ADMIN__/<?php echo $controller; ?>.js"></script>
