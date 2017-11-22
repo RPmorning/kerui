@@ -4,15 +4,17 @@ var configUrl = "/admin/config/",
     siteLoginBg = null;
 
 layui.use(['form','layer','upload'], function(){
-    var form = layui.form();
+    var form = layui.form,
+        upload = layui.upload;
     var layer=layui.layer;
 
     // 登录背景图上传
-    layui.upload({
+    upload.render({
         url: configUrl + "uploadSiteLoginBg",
         title: '请上传背景图',
         elem: '#site-login-bg', //指定原始元素，默认直接查找class="layui-upload-file"
-        method: 'post', //上传接口的http类型
+        method: 'post' //上传接口的http类型
+        ,data: {}, //可选项。额外的参数，如：{id: 123, abc: 'xxx'}
         before: function(input){
             //返回的参数item，即为当前的input DOM对象
             layer.load(0, {shade: false}); //0代表加载的风格，支持0-2

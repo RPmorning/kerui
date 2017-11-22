@@ -14,9 +14,9 @@ layui.config({
 
 
 // 加载树形菜单
-layui.use(['layer','element', 'form'], function(){
-    var element = layui.element(),
-        form = layui.form();
+layui.use(['layer','element', 'form','upload'], function(){
+    var element = layui.element,
+    form = layui.form;
     layer = layui.layer;
     common.clearCache = function () {
         $.getJSON("/admin/index/clearCache", function (result) {

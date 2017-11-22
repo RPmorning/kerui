@@ -4,7 +4,7 @@ var linkUrl = "/admin/link/",
     layerDom,cover = null,
     uploadLinkSrc = $("#cover-src");
 layui.use(['form','layedit'], function() {
-    var form = layui.form(),
+    var form = layui.form,
         layedit = layui.layedit;
 
 

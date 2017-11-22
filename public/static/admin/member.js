@@ -1,7 +1,7 @@
 var memberUrl = "/admin/member/",
     member = {};
-layui.use(['form'], function(){
-    var form = layui.form(),
+layui.use(['form','element'], function(){
+    var form = layui.form,
         layer = layui.layer;
 
     form.on('switch(status)', function(data){

@@ -5,8 +5,9 @@ var productUrl = "/admin/product/",
     layerDom,cover = null,
     uploadSrc = $("#cover-src");
 layui.use(['form','element', 'upload'], function() {
-    var form = layui.form(),
-        element = layui.element();
+    var form = layui.form,
+        upload = layui.upload,
+        element = layui.element;
 
     // 创建一个上传实例
     uploadCover();
@@ -93,11 +94,12 @@ layui.use(['form','element', 'upload'], function() {
 
     // 定义一个封面上传控件
     function uploadCover() {
-        layui.upload({
-            //指定原始元素，默认直接查找class="layui-upload-file"
-            url: productUrl + "cover",
-            title: '请上传产品图（1:1）',
-            method: 'post', //上传接口的http类型
+        upload.render({
+            elem: '#cover-src'
+            ,url: productUrl + "cover" //必填项
+            ,title: '请上传产品图（1:1）'
+            ,method: 'post'  //可选项。HTTP类型，默认post
+            ,data: {}, //可选项。额外的参数，如：{id: 123, abc: 'xxx'}
             before: function(input){
                 //返回的参数item，即为当前的input DOM对象
                 loadIndex = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2

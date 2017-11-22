@@ -4,7 +4,7 @@
 var videoUrl = "/index/index/",
     video = {};
 layui.use(['form'], function(){
-    var form = layui.form(),
+    var form = layui.form,
         layer = layui.layer;
 
     form.on('switch(status)', function(data){
