@@ -18,7 +18,6 @@ layui.use(['layer','element', 'form'], function(){
     var element = layui.element(),
         form = layui.form();
     layer = layui.layer;
-
     common.clearCache = function () {
         $.getJSON("/admin/index/clearCache", function (result) {
             layer.msg(result.msg, {time:2000}, function () {

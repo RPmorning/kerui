@@ -1,8 +1,18 @@
 {extend name="public/base" /}
 {block name="main-container"}
+<fieldset class="layui-elem-field layui-field-title" style="margin-left: 25%;">
+    <legend>美图秀</legend>
+</fieldset>
+<div class="layui-carousel" id="test10" style="margin-left: 25%">
+    <div carousel-item="">
+        <div><img src="/static/imgs/4.png"></div>
+        <div><img src="/static/imgs/7.png"></div>
+        <div><img src="/static/imgs/8.png"></div>
+    </div>
+</div>
 <div class="main-index">
     <div class="layui-collapse">
-        <div class="layui-colla-item">
+       <!-- <div class="layui-colla-item">
             <h2 class="layui-colla-title">服务器信息</h2>
             <div class="layui-colla-content">
                 <table class="layui-table">
@@ -38,30 +48,30 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div>-->
         <div class="layui-colla-item">
-            <h2 class="layui-colla-title">系统信息</h2>
+            <h2 class="layui-colla-title">个人信息</h2>
             <div class="layui-colla-content layui-show">
                 <table class="layui-table">
                     <tbody>
                     <tr>
-                        <td>系统名称</td>
+                        <td>个人名称</td>
                         <td>{$Think.config.name}</td>
                     </tr>
                     <tr>
-                        <td>产品研发团队</td>
-                        <td>{$Think.config.team}</td>
+                        <td>个人性别</td>
+                        <td>{$Think.config.sex}</td>
+                    </tr>
+                    <tr>
+                        <td>家庭住址</td>
+                        <td>
+                            {$Think.config.company_address}
+                        </td>
                     </tr>
                     <tr>
                         <td>项目地址</td>
                         <td>
                             <a target="_blank" href="{$Think.config.project}">{$Think.config.project}</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>住址</td>
-                        <td>
-                            {$Think.config.company_address}
                         </td>
                     </tr>
                     </tbody>
@@ -72,3 +82,6 @@
 </div>
 {/block}
 
+{block name="page-script"}
+<script src="/static/admin/carousel.js"></script>
+{/block}

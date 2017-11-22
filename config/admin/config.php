@@ -7,8 +7,8 @@
  */
 
 return [
-    'name' => '任鹏个人网站',
-    'team' => '任鹏Team',
+    'name' => '任鹏(renpeng)',
+    'sex' => '男',
     'project' => 'https://github.com/RPmorning/renpeng.git',
     'company_address' => '四川省 绵阳市 游仙区 紫金城',
 
