@@ -75,6 +75,11 @@ class Article extends Base
     public function save()
     {
         $data = $this->request->post();
+        unset($data['file']);
+        if(isset($data['covers'])){
+            $data['cover'] = $data['covers'];
+            unset($data['covers']);
+        }
         $res = $this->article->saveArticle($data);
         if($res) {
             return $this->success("保存成功", url("index"));
@@ -138,12 +143,12 @@ class Article extends Base
      */
     public function cover()
     {
-        $file = $this->request->file("cover");
+        $file = $this->request->file("file");
         $path = $this->article->saveCover($file);
         if($path){
-            $data = ['path' => $path, 'code' => '1'];
+            $data = ['path' => $path, 'code' => '0'];
         }else{
-            $data = ['msg' => $this->config->getError(), 'code' => '0'];
+            $data = ['msg' => $this->article->getError(), 'code' => '1'];
         }
         return json($data, 200);
     }

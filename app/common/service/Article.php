@@ -169,7 +169,7 @@ class Article extends ArticleModel
         }
         static $upload = null;
         if (!$upload) {
-            $upload = new \sckr\Upload();
+            $upload = new \rp\Upload();
         }
         $info = $upload->uploadFile($file, "image");
         if($info){

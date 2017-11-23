@@ -11,7 +11,7 @@ layui.use(['form','layer','upload'], function(){
     // 登录背景图上传
     upload.render({
         url: configUrl + "uploadSiteLoginBg",
-        title: '请上传背景图',
+        title: '请上传背景图(3:2)',
         elem: '#site-login-bg', //指定原始元素，默认直接查找class="layui-upload-file"
         method: 'post' //上传接口的http类型
         ,data: {}, //可选项。额外的参数，如：{id: 123, abc: 'xxx'}

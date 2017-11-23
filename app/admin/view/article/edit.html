@@ -28,10 +28,18 @@
         <label class="layui-form-label">文章封面</label>
         <div class="layui-input-block">
             <div class="cover-upload">
-                <img data-path="__UPLOAD__" id="edit-cover-src" data-src="{$article->getData('cover')}" {empty name="article.cover"}class="hidden"{else/}src="{$article.cover}"{/empty}>
-                <div class="site-demo-upbar mt10">
-                    <input type="file" name="cover" class="layui-upload-file"  lay-ext="jpg|png|gif" id="edit-cover">
-                </div>
+                {if condition = "$article->getData('cover') neq ''"}
+                    <img data-path="__UPLOAD__" id="edit-cover-src" data-src="{$article->getData('cover')}" {empty name="article.cover"}class="hidden"{else/}src="{$article.cover}"{/empty}>
+                    <div class="site-demo-upbar mt10">
+                        <input type="file" name="cover" class="layui-upload-file"  lay-ext="jpg|png|gif" id="edit-cover">
+                    </div>
+                {else /}
+                    <button type="button" class="layui-btn" id="test1">上传图片</button>
+                    <div class="layui-upload-list">
+                        <img class="layui-upload-img" id="cover-src">
+                        <p id="coverText"></p>
+                    </div>
+                {/if}
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace sckr\lib\storage;
+namespace rp\lib\storage;
 
 class Local
 {

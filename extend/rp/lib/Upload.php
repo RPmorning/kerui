@@ -1,6 +1,6 @@
 <?php
 
-namespace sckr\lib;
+namespace rp\lib;
 
 use think\File;
 use app\common\model\Asset as AssetModel;

@@ -14,7 +14,7 @@ use dir\Dir;
 use think\Route;
 use think\Loader;
 use think\Request;
-use cmf\lib\Storage;
+use cmf\rp\Storage;
 
 // 应用公共文件
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace sckr\lib;
+namespace rp\lib;
 
 class Storage
 {

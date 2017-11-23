@@ -11,7 +11,7 @@
 // | 修改者: roam (本权限类在原3.2.3的基础上修改过来的)
 // +----------------------------------------------------------------------
 
-namespace sckr;
+namespace rp;
 
 use think\Config;
 use app\common\model\Asset as AssetModel;

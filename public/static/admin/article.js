@@ -3,7 +3,7 @@ var articleUrl = "/admin/article/",
     loadIndex,
     editIndex,
     layerDom,cover = null,
-    uploadSrc = $("#cover-src");
+    uploadSrc = $("#coverImag");
 layui.use(['form','element','upload'], function() {
     var form = layui.form,
         upload = layui.upload,
@@ -46,6 +46,7 @@ layui.use(['form','element','upload'], function() {
     form.on('submit(save)', function(data){
         data.field.cover = cover ? cover : uploadSrc.attr("data-src");
         $.post(articleUrl + "save", data.field,  function (result) {
+            //console.log(result);
             layer.msg(result.msg, {time:2000}, function () {
                 if(result.code) window.location.replace(result.url);
             });
@@ -93,34 +94,65 @@ layui.use(['form','element','upload'], function() {
         });
     };
 
+    //普通图片上传
+
+
     // 定义一个封面上传控件
     function uploadCover() {
         upload.render({
-            elem: '#cover-src'
-            ,url: articleUrl + "cover" //必填项
-            ,method: 'post'  //可选项。HTTP类型，默认post
-            ,data: {}, //可选项。额外的参数，如：{id: 123, abc: 'xxx'}
+            elem: '#test1'
+            ,url: articleUrl + 'cover'
+            ,method: 'post' //上传接口的http类型
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result){
+                    $('#coverImag').attr('src', result); //图片链接（base64）
+                });
+            }
+            ,done: function(res){
 
-            before: function(input){
-                //返回的参数item，即为当前的input DOM对象
-                loadIndex = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
-                console.log('文件上传中');
-            },
-            success: function(result){
-                layer.close(loadIndex);
-                if(result.code){
-                    layer.msg("上传成功", {time:2000}, function () {
-                        cover = result.path;
-                        uploadSrc.attr("src", uploadSrc.attr("data-path") + "/" + cover);
-                        uploadSrc.fadeIn();
-                    });
-
-                }else{
-                    layer.msg("上次失败" + result.msg,  {time:2000});
+                // 如果上传失败
+                if(res.code > 0){
+                    return layer.msg('上传失败!');
+                }else {
+                    $("#covers").val(res.path);
+                    return layer.msg('上传成功！');
                 }
+            }
+            ,error: function(){
+                //演示失败状态，并实现重传
+                var demoText = $('#coverText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                });
             }
         });
 
-    }
+        // upload.render({
+        //     elem: '#cover-src'
+        //     ,url: articleUrl + "cover" //必填项
+        //     ,title: '请上文章封面图(3:2)'
+        //     ,method: 'post',  //可选项。HTTP类型，默认post
+        //     before: function(input){
+        //         //返回的参数item，即为当前的input DOM对象
+        //         loadIndex = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
+        //         console.log('文件上传中');
+        //     },
+        //     success: function(result){
+        //         layer.close(loadIndex);
+        //         if(result.code){
+        //             layer.msg("上传成功", {time:2000}, function () {
+        //                 cover = result.path;
+        //                 uploadSrc.attr("src", uploadSrc.attr("data-path") + "/" + cover);
+        //                 uploadSrc.fadeIn();
+        //             });
+        //
+        //         }else{
+        //             layer.msg("上次失败" + result.msg,  {time:2000});
+        //         }
+        //     }
+        // });
 
+    }
 });
