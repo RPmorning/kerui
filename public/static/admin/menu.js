@@ -1,12 +1,12 @@
-var categoryUrl = "/admin/category/",
-    category = {},
+var menuUrl = "/admin/menu/",
+    menu = {},
     level = 1,
     iconIndex,
-    layerDom = null;
+    layerDom = document.getElementById("tab-create");
 layui.use(['form'], function() {
     var form = layui.form;
 
-    $("#category-table").treetable({
+    $("#menu-table").treetable({
         expandable : true
     });
 
@@ -20,50 +20,35 @@ layui.use(['form'], function() {
     });
 
     // Listen In From
-    form.on('switch(nav)', function(data){
+    form.on('switch(status)', function(data){
         var param = {
             id: $(this).attr("data-id"),
-            nav: (data.elem.checked) ? data.value : 0
+            status: (data.elem.checked) ? data.value : 0
         }
-        $.getJSON(categoryUrl + "nav", param);
-    });
-
-    form.on('select(type)', function(data){
-        var model = $("#model"),
-            url  = $("#url");
-        changeType(data, model, url);
-    });
-    form.on('select(editType)', function(data){
-        var model = $("#edit-model"),
-            url  = $("#edit-url");
-        changeType(data, model, url);
-    });
-    form.on('select(createType)', function(data){
-       var model = $("#create-model"),
-            url  = $("#create-url");
-        changeType(data, model, url);
+        $.getJSON(menuUrl + "status", param);
     });
 
     form.on('submit(save)', function(data){
         var mix = (data.field.pid).split("|");
         data.field.pid = mix[0];
         data.field.level = mix[1];
-        $.post(categoryUrl + "save", data.field,  function (result) {
+        data.field.param = (data.field.param === '例如：id=4&p=1')? '': data.field.param;
+        $.post(menuUrl + "save", data.field,  function (result) {
             layer.msg(result.msg, {time:2000}, function () {
-                if(result.code) window.location.replace(result.url);
+               if(result.code) window.location.replace(result.url);
             });
         });
         return false;
     });
 
 
+    menu.create = function (id) {
 
-    category.createSub = function (id) {
-        $.getJSON(categoryUrl + "createSub/id/" + id, function (result) {
+        $.getJSON(menuUrl + "create/id/" + id, function (result) {
             layer.open({
                 type: 1,
                 title: result.msg,
-                area: ['600px', '440px'],
+                area: ['600px', '600px'],
                 shadeClose: true,
                 content: result.data,
                 success: function(layero, index){
@@ -74,12 +59,12 @@ layui.use(['form'], function() {
             form.render();
         });
     };
-    category.edit = function (id) {
-        $.getJSON(categoryUrl + "edit/id/" + id, function (result) {
+    menu.edit = function (id) {
+        $.getJSON(menuUrl + "edit/id/" + id, function (result) {
             layer.open({
                 type: 1,
                 title: result.msg,
-                area: ['600px', '400px'],
+                area: ['600px', '600px'],
                 shadeClose: true,
                 content: result.data,
                 success: function(layero, index){
@@ -91,11 +76,11 @@ layui.use(['form'], function() {
         });
     };
 
-    category.delete = function (id) {
+    menu.delete = function (id) {
         var index = layer.confirm('确定删除？', {
             btn: ['确定','取消'] //按钮
         }, function(){
-            $.getJSON(categoryUrl + "delete/id/" + id, function (result) {
+            $.getJSON(menuUrl + "delete/id/" + id, function (result) {
                 layer.msg(result.msg, {time:2000}, function () {
                     if(result.code) window.location.replace(result.url);
                 });
@@ -105,11 +90,11 @@ layui.use(['form'], function() {
         });
     };
 
-    category.sort = function () {
-        var trs = $(".category-tr"),
+    menu.sort = function () {
+        var trs = $(".menu-tr"),
             param = [];
         $.each(trs, function (k, v) {
-           var sort = $(this).find(".category-sort").val();
+           var sort = $(this).find(".menu-sort").val();
            if(sort != 0){
                param.push({
                    id: $(this).attr("data-tt-id"),
@@ -117,21 +102,35 @@ layui.use(['form'], function() {
                })
            }
         });
-        $.post(categoryUrl + "sort", {param:param}, function (result) {
+        $.post(menuUrl + "sort", {param:param}, function (result) {
             layer.msg(result.msg, {time:2000}, function () {
                 if(result.code) window.location.replace(result.url);
             });
         });
     };
 
-    function changeType(data, model, url) {
-        var type = data.value;
-        switch (parseInt(type)) {
-            case 1 : model.hide(); url.hide();
-                break;
-            case 2 : url.show(); model.hide();
-                break;
-            default : model.show(); url.hide();
-        };
-    }
+    menu.icon = function (id) {
+        $.getJSON(menuUrl + "icon", function (result) {
+            layer.open({
+                type: 1,
+                title: result.msg,
+                area: ['650px', '600px'],
+                shadeClose: true,
+                content: result.data,
+                success: function(layero, index){
+                    iconIndex = index;
+                }
+            });
+            // reload form
+            form.render();
+        });
+    };
+
+    menu.build = function (id) {
+        $.getJSON(menuUrl + "build/id/" + id, function (result) {
+            layer.msg(result.msg, {time:2000}, function () {
+                // if(result.code) window.location.replace(result.url);
+            });
+        });
+    };
 });

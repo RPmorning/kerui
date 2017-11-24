@@ -28,7 +28,7 @@ class Menu extends Base
      {
          $this->pageTitle = "系统菜单";
          $this->assign('pageTitle',$this->pageTitle);
-         $this->assign('systemMenus', tree_select($this->menu->getMenus(0)));
+         $this->assign('systemMenus', tree_select(get_menus(0)));
          $this->assign("pid", "");
          return $this->fetch();
      }

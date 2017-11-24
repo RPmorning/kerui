@@ -1,0 +1,63 @@
+<form class="layui-form mt20">
+    <div class="layui-form-item">
+        <label class="layui-form-label">上级</label>
+        <div class="layui-input-inline">
+            <select name="pid" lay-filter="pid">
+                <option value="0|0">作为一级菜单</option>
+                {volist name="systemMenus" id="menu"}
+                <option value="{$menu.id}|{$menu.level}"{eq name='menu.id' value='$pid'} selected{/eq}>{php}echo str_repeat("&nbsp;&nbsp;",$menu['level']).dec2roman($menu['level']);{/php}—{$menu.name}</option>
+                {/volist}
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">名称</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" lay-verify="required" name="name">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">模块</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" lay-verify="required|letter" name="module">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">控制器</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" lay-verify="required|letter" name="controller">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">方法</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" lay-verify="required" name="action">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">参数</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" name="param" placeholder="例如：id=4&p=1">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">排序</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" name="sort"   placeholder="10">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">图标</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" name="icon" id="icon">
+        </div>
+         <div class="layui-input-inline">
+             <span id="menu-icon" class="layui-btn layui-btn-primary layui-btn-default layui-btn-disabled iconfont"></span>
+             <a href="javascript:menu.icon();" class="layui-btn layui-btn-primary layui-btn-default">选择图标</a>
+        </div>
+    </div>
+    <div class="layui-input-block">
+        <a class="layui-btn save-btn layui-btn-normal" lay-filter="save" lay-submit>{:lang('save')}</a>
+        <input type="reset" class="layui-btn layui-btn-primary goback" value="{:lang('rest')}">
+    </div>
+</form>

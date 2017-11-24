@@ -1,0 +1,60 @@
+{extend name="public/base" /}
+{block name="main-container"}
+<article class="main-menu">
+    <div class="layui-tab">
+        <ul class="layui-tab-title new-tab">
+            <li class="layui-this">菜单列表</li>
+            <li>添加菜单</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <table class="layui-table" id="menu-table">
+                    <thead>
+                        <tr>
+                            <td>排序</td>
+                            <td>ID</td>
+                            <td>菜单名称</td>
+                            <td>应用</td>
+                            <td>状态</td>
+                            <td>编辑</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {volist name="systemMenus" id="menu"}
+                        <tr data-tt-id="{$menu.id}" class="menu-tr" {eq name="menu.level" value="1"}data-hier="1"{else/}data-tt-parent-id="{$menu.pid}" class="hidden"{/eq}>
+                            <td><input type="text" class="layui-input menu-sort" value="{$menu.sort}"></td>
+                            <td>{$menu.id}</td>
+                            <td>{$menu.name}</td>
+                            <td>{$menu.url}</td>
+                            <td class="layui-form">
+                                <input type="checkbox" lay-skin="switch" lay-filter="status" lay-text="ON|OFF" data-id="{$menu.id}"  value="1" {eq name="menu.status" value="1"} checked{/eq}>
+                            </td>
+                            <td class="operation">
+                                <a href="javascript:menu.create('{$menu.id}');" class="layui-btn layui-btn-small btn-success">
+                                    <i class="layui-icon">&#xe654;</i>添加子菜单
+                                </a>
+                                <a href="javascript:menu.edit('{$menu.id}');" class="layui-btn layui-btn-small btn-success">
+                                    <i class="layui-icon">{:lang('icon-edit')}</i>{:lang('edit')}
+                                </a>
+                                <a href="javascript:menu.delete('{$menu.id}');"  class="layui-btn layui-btn-small btn-danger">
+                                    <i class="layui-icon">{:lang('icon-del')}</i>{:lang('delete')}
+                                </a>
+                            </td>
+                        </tr>
+                        {/volist}
+                    </tbody>
+                </table>
+                <div class="fl mt20">
+                    <a href="javascript:menu.sort();" class="sortBtn layui-btn btn-success layui-btn-small">排序</a>
+                </div>
+            </div>
+            <div id="tab-create" class="layui-tab-item">
+                {include file="menu/create" /}
+            </div>
+        </div>
+    </div>
+</article>
+{/block}
+{block name="page-script"}
+{js href="__LIB__/jquery/jquery.treetable.js" /}
+{/block}

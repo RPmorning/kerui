@@ -98,6 +98,20 @@ function cmf_get_root()
     $root    = str_replace('/index.php', '', $root);
     return $root;
 }
+/**
+ * 获取菜单数组,二级菜单元素位于一级菜单的'child'元素中
+ *
+ * @param int $type
+ * @return array
+ */
+function get_menus($type = 1)
+{
+    $map = [];
+    if ($type) $map['status'] = 1;
+    $menus = Db::name('Menu')->field('name,id,pid,url,status,icon,sort,level')
+        ->where($map)->order('sort asc, id asc')->select();
+    return list_to_tree($menus);
+}
 
 /**
  * @TODO 增加主题切换时获取当然主题

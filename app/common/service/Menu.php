@@ -41,9 +41,9 @@ class Menu extends MenuModel
             try {
                 if(isset($data["id"])) { // 更新
                     $menu = $this::get($data["id"]);
-                    $ruleId = $menu->authRule->id;
+//                    $ruleId = $menu->authRule->id;
                     if($menu->allowField(true)->save($data)){
-                        $menu->authRule()->where("id","$ruleId")->update($ruleData);
+//                        $menu->authRule()->where("id","$ruleId")->update($ruleData);
                         $this->error = "菜单更新成功";
                     }else{
                         $this->error = "菜单更新失败";
