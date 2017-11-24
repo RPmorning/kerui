@@ -35,7 +35,12 @@ layui.use(['form','element','upload'], function() {
             id: $(this).attr("data-id"),
             status: (data.elem.checked) ? data.value : 0
         }
-        $.getJSON(articleUrl + "status", param);
+        $.post(articleUrl + "status", param,  function (result) {
+            layer.msg(result.msg, {time:1500}, function () {
+                window.location.replace(result.url);
+            });
+        });
+
     });
 
     form.on('select(categoryFilter)', function(data){

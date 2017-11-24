@@ -18,9 +18,12 @@
     <tr>
         <td width="6%">{$key+1}</td>
         <td>
-            <a href="javascript:void(0)" onclick="article.detailed('{$article.id}')" class="articleDetail" >
-                {$article.name}
-            </a>
+            {if condition="$article.status == 1"}
+                <a href="javascript:void(0)" onclick="article.detailed('{$article.id}')" class="articleDetail" >
+                    {$article.name}
+                </a>
+            {else /}{$article.name}
+            {/if}
         </td>
         <td>{$article.source}</td>
         <td>{$article.update_time}</td>

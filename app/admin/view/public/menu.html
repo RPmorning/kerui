@@ -1,20 +1,31 @@
 <div class="aside-menu">
     <!--<div id="aside-sidebar" class="cursor tc"><i class="iconfont icon-sidebar"></i></div>-->
     <ul class="layui-nav layui-nav-tree" lay-filter="test">
-
         {volist name="menus" id="menu" empty="no data" }
         <li class="layui-nav-item layui-nav-itemed">
             {present name="menu.child"}
             <a href="javascript:;">{$menu.name}</a>
             <dl class="layui-nav-child">
                 {volist name="menu.child" id="submenu" empty="no data" }
-                <dd class="{$submenu.class|default=''}"><a href="{$submenu.url|url}"><i class="iconfont f16 mr5 {$submenu.icon}"></i>{$submenu.name}</a></dd>                    {/volist}
+                    <dd class="{$submenu.class|default=''}">
+                        <a href="{$submenu.url|url}">
+                            <i class="iconfont f16 mr5 {$submenu.icon}"></i>{$submenu.name}
+                            <i class="iconfont icon-yuandian"></i>
+                        </a>
+                    </dd>
+                {/volist}
             </dl>
             {else/}
-            <a href="{$menu.url|url}"><i class="iconfont f16 mr5 {$submenu.icon}"></i>{$menu.name}</a>
+            <dl class="layui-nav-child">
+                <dd class="{$menu.class|default=''}">
+                    <a href="{$menu.url|url}">
+                        <i class="iconfont f16 mr5 {$submenu.icon}"></i>{$menu.name}
+                        <i class="iconfont icon-yuandian"></i>
+                    </a>
+                </dd>
+            </dl>
             {/present}
         </li>
         {/volist}
-
     </ul>
 </div>

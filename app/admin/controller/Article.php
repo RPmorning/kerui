@@ -176,8 +176,12 @@ class Article extends Base
         return json($result, 200);
     }
 
+    /**查询文章的详情
+     * @param Request $request
+     */
     public function detailed(Request $request){
         $res = $request->param();
+        $data = $this->article->getArticleDetail($res['id']);
         dump($res);
     }
 }

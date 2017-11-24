@@ -179,4 +179,8 @@ class Article extends ArticleModel
             return false;
         }
     }
+
+    public function getArticleDetail($id){
+        $data  = ArticleModel::where('id',$id)->select();
+    }
 }
