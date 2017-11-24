@@ -17,7 +17,7 @@ class Index extends Base
      */
     public function index()
     {
-        $this->assign('page_title','任鹏个人网站') ;
+        $this->assign('pageTitle','首页') ;
         $this->assign('system', config('system'));
         $mysql = Db::query('SELECT VERSION() as mysql_version');
         $mysql_ver = $mysql[0]['mysql_version'];//MYSQL版本号
