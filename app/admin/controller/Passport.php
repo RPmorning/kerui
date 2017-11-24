@@ -10,6 +10,7 @@ namespace app\admin\controller;
 use app\common\controller\Common;
 use app\common\service\Member;
 use think\Hook;
+use think\Session;
 
 class Passport extends Common
 {
@@ -45,6 +46,10 @@ class Passport extends Common
             case -3 : $this->error("登录失败，验证码错误", url('login'));
                 break;
             default :
+                $menus = \app\common\model\Menu::where(['status'=>1])->select();
+                $menus = list_to_tree(collection($menus)->toArray());
+                Session::set('menus',$menus);
+                Session::set('__MENU__',$menus);
                 $this->success("登录成功", "index/");
 //                Hook::listen("member_login", $uid); $this->success("登录成功", "index/");
         }

@@ -93,6 +93,17 @@ layui.use(['form','element','upload'], function() {
             layer.close(index);
         });
     };
+    
+    article.detailed = function (id) {
+        layer.open({
+            type: 2,
+            title: '文章详情',
+            area: ['800px', '650px'],
+            shadeClose: true,
+            maxmin: true,
+            content: articleUrl + 'detailed/id/'+id, //这里content是一个普通的String
+        });
+    }
 
     //普通图片上传
 

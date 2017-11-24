@@ -17,7 +17,11 @@
     {volist name='articles' id='article'}
     <tr>
         <td width="6%">{$key+1}</td>
-        <td>{$article.name}</td>
+        <td>
+            <a href="javascript:void(0)" onclick="article.detailed('{$article.id}')" class="articleDetail" >
+                {$article.name}
+            </a>
+        </td>
         <td>{$article.source}</td>
         <td>{$article.update_time}</td>
         <td class="layui-form">

@@ -1,3 +1,7 @@
 #cover-src,#edit-cover-src{  width: 200px;  height: auto;  }
 
 .layui-upload{margin-top: 25px; margin-left: 5px;}
+
+a.articleDetail{
+    color: #009688;
+}

@@ -8,6 +8,7 @@ namespace app\admin\controller;
 
 use app\common\service\Article as ArticleService;
 use app\common\service\Category as CategoryService;
+use think\Request;
 
 class Article extends Base
 {
@@ -173,5 +174,10 @@ class Article extends Base
             ];
         }
         return json($result, 200);
+    }
+
+    public function detailed(Request $request){
+        $res = $request->param();
+        dump($res);
     }
 }

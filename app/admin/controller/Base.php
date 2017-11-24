@@ -31,9 +31,7 @@ class Base extends Common
                 $this->error('403:禁止访问');
             }
         }
-
-        $menus = Menu::all(['status'=>1]);
-        $menus = list_to_tree(collection($menus)->toArray());
+        $menus = session('menus');
         $this->assign('menus', $menus);
         $this->assign('__MENU__', $menus);
 
