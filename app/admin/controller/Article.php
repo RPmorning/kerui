@@ -14,11 +14,10 @@ class Article extends Base
     protected $article;
     protected $category;
 
-    public function __construct(ArticleService $article, CategoryService $category)
+    public function __construct(ArticleService $article)
     {
         parent::__construct();
         $this->article = $article;
-        $this->category = $category;
     }
 
     /**
@@ -30,7 +29,6 @@ class Article extends Base
     {
         $this->pageTitle = "文章管理";
         $this->assign('pageTitle',$this->pageTitle);
-        $this->assign("categorys", $this->category->getCategorysByType(0, 0));
         $this->assign("articles", $this->article->getArticles($cid));
         return $this->fetch();
     }
@@ -41,7 +39,6 @@ class Article extends Base
      */
     public function read($cid)
     {
-        $this->assign("categorys", $this->category->getCategorysByType(0, 0));
         $this->assign("articles", $this->article->getArticles($cid));
         $data = $this->fetch("list");
         return $this->success("文章列表", url("index"), $data);
@@ -57,7 +54,6 @@ class Article extends Base
     {
         $article=  $this->article->getArticleById($id);
         if($article){
-            $this->assign("categorys", $this->category->getCategorysByType(0, 0));
             $this->assign("article", $article);
             $data = $this->fetch();
             return $this->success("编辑文章", url("index"), $data);

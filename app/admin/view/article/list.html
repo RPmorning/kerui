@@ -1,17 +1,4 @@
 <header class="category-filter layui-form">
-   <!-- <div class="layui-form-item">
-        <select name="category_filter" lay-filter="categoryFilter">
-            <option value="0">全部文章</option>
-            {volist name="categorys" id="category"}
-            {present name="category.leaf"}
-            <option value="{$category.id}" disabled>{php}echo str_repeat("&nbsp;&nbsp;",$category['level']).dec2roman($category['level']);{/php}—{$category.name}</option>
-            {else/}
-            <option value="{$category.id}"{eq name='Request.param.cid' value='$category.id'} selected{/eq}>{php}echo str_repeat("&nbsp;&nbsp;",$category['level']).dec2roman($category['level']);{/php}—{$category.name}</option>
-            {/present}
-            {/volist}
-        </select>
-    </div>
-</header>-->
     <div class="layui-form-item">
         <option value="0">全部文章</option>
     </div>

@@ -14,10 +14,9 @@ class Link extends Base{
     protected $category;
     protected $link;
 
-    public function __construct(LinkService $link,CategoryService $category){
+    public function __construct(LinkService $link){
         parent::__construct();
         $this->link = $link;
-        $this->category = $category;
     }
 
     /**
