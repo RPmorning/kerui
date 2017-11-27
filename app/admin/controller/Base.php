@@ -10,6 +10,7 @@ namespace app\admin\controller;
 
 use app\common\controller\Common;
 use app\common\service\Menu;
+use think\Cache;
 use think\Session;
 
 class Base extends Common
@@ -34,8 +35,8 @@ class Base extends Common
         }
 
         $menus = get_menus();
-        if (empty(Session::get('menu_list'))) {
-            Session::set('menu_list', $menus);
+        if (empty(Cache::get('menu_list'))) {
+            Cache::set('menu_list', $menus);
         }
         $this->assign('menus',$menus);
 
