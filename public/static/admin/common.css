@@ -81,3 +81,10 @@ body{background-color: #f4f4f4;}
     background-color: #0580D2;
     color: #fff;
 }
+
+
+
+#kr-aside .layui-nav-child a .icon-yuandian{display: none}
+#kr-aside .layui-nav-child a:hover .icon-yuandian, #kr-aside .layui-nav-child .layui-this a .icon-yuandian {display: inline-block;margin-left: 10px}
+
+

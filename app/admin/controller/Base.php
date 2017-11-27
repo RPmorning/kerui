@@ -10,6 +10,7 @@ namespace app\admin\controller;
 
 use app\common\controller\Common;
 use app\common\service\Menu;
+use think\Session;
 
 class Base extends Common
 {
@@ -31,9 +32,20 @@ class Base extends Common
                 $this->error('403:禁止访问');
             }
         }
-        $menus = session('menus');
-        $this->assign('menus', $menus);
-        $this->assign('__MENU__', $menus);
+
+        $menus = get_menus();
+        if (empty(Session::get('menu_list'))) {
+            Session::set('menu_list', $menus);
+        }
+        $this->assign('menus',$menus);
+
+//        $menus = \app\common\model\Menu::where(['status'=>1])->select();
+//        $menus = list_to_tree(collection($menus)->toArray());
+//        Session::set('menus',$menus);
+//        Session::set('__MENU__',$menus);
+//        $menus = session('menus');
+//        $this->assign('menus', $menus);
+//        $this->assign('__MENU__', $menus);
 
     }
 
