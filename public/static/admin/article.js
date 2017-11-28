@@ -60,6 +60,15 @@ layui.use(['form','element','upload'], function() {
     });
 
     article.edit = function (id) {
+        // layer.open({
+        //     type: 2,
+        //     title: '编辑文章',
+        //     area: ['800px', '850px'],
+        //     shadeClose: true,
+        //     maxmin: true,
+        //     content: articleUrl + 'edit/id/'+id
+        // });
+
         $.getJSON(articleUrl + "edit/id/" + id, function (result) {
             if(result.code) {
                 UE.delEditor('edit-container-'+id);
@@ -74,10 +83,9 @@ layui.use(['form','element','upload'], function() {
                     id: id
                 });
                 element.tabChange('article', id);
-
                 // reload form
                 uploadCover();
-                uploadSrc = $("#edit-cover-src");
+                // uploadSrc = $("#edit-cover-src");
                 form.render();
             }else{
                 layer.msg(result.msg, {time:2000});

@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title> </title>
-</head>
-<body>
+<link rel="stylesheet" type="text/css" href="__ADMIN__/article.css">
 
-</body>
-</html>
+<div class="article-title">
+    {$articleDetails.name}
+</div>
+<div class="article-zzly">
+    <span style="margin: 20px">作者:{$articleDetails.author}</span>
+    <span style="margin: 20px">来源:{$articleDetails.source}</span>
+</div>
+<div class="article-imag">
+    <img src="{$articleDetails.cover}">
+</div>
+<div class="layui-text">
+    {$articleDetails.content}
+</div>
+<div class="article-shijian">
+    {$articleDetails.update_time}
+</div>

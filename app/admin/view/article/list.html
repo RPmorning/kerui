@@ -1,13 +1,10 @@
-<header class="category-filter layui-form">
-    <div class="layui-form-item">
-        <option value="0">全部文章</option>
-    </div>
 <table class="layui-table">
     <thead>
     <tr>
         <td>文章编号</td>
         <td>文章标题</td>
         <td>文章来源</td>
+        <td>发布人员</td>
         <td>更新时间</td>
         <td>文章状态</td>
         <td>管理操作</td>
@@ -26,6 +23,7 @@
             {/if}
         </td>
         <td>{$article.source}</td>
+        <td>{$article.member.realname}</td>
         <td>{$article.update_time}</td>
         <td class="layui-form">
             <input type="checkbox" lay-skin="switch" lay-filter="status" lay-text="ON|OFF" data-id="{$article.id}"  value="1" {eq name="article.status" value="1"} checked{/eq}>

@@ -5,3 +5,26 @@
 a.articleDetail{
     color: #009688;
 }
+
+.article-title{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 26px;
+}
+.article-zzly{
+    margin-top: 15px;
+    text-align: center;
+    font-size: 15px;
+}
+.article-shijian{
+    font-size: 10px;
+    position: relative;
+}
+.article-imag{
+    margin-top: 15px;
+    text-align: center;
+}
+
+.layui-table{
+    text-align: center;
+}

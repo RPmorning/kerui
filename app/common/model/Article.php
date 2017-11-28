@@ -17,7 +17,7 @@ class Article extends Model
 
     //create_date读取器
     protected function getCreateTimeAttr($crate_time){
-        return date('Y-m-d',$crate_time);
+        return date('Y-m-d h:i:s',$crate_time);
     }
     //update_date读取器
     protected function getUpdateTimeAttr($update_time){
@@ -36,6 +36,6 @@ class Article extends Model
     //定义关联
     public function member()
     {
-        return  $this->belongsTo("Member")->field("id, username");
+        return  $this->belongsTo("Member")->field("id, username,realname");
     }
 }

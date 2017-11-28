@@ -77,6 +77,7 @@ class Article extends Base
             $data['cover'] = $data['covers'];
             unset($data['covers']);
         }
+        $data['member_id'] = session('user_auth')['uid'];
         $res = $this->article->saveArticle($data);
         if($res) {
             return $this->success("保存成功", url("index"));
@@ -182,6 +183,9 @@ class Article extends Base
     public function detailed(Request $request){
         $res = $request->param();
         $data = $this->article->getArticleDetail($res['id']);
-        dump($res);
+//        dump($data);die();
+//        dump(collection($data)->toArray());die();
+        $this->assign('articleDetails',$data);
+        return $this->fetch();
     }
 }

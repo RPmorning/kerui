@@ -80,19 +80,6 @@ class Article extends ArticleModel
         $map["id"] = $id;
         if($status == 1) $map["status"] = 1;
         $article = parent::get($map, 'member');
-        if($status == 1){ // 实现前一篇 后一篇
-            $cid = $article->getData("category_id");
-            $map['category_id'] = array('eq', $cid);
-            $article->url = url('category/index','mid=0&id='.$cid);
-            $map['id'] = array('lt',$id);
-            $prev = self::where($map)->order("id desc")->field("id,name")->limit(1)->find();
-            if($prev)  $prev->url = url('detail/index','mid=0&id='.$prev->id);
-            $map['id'] = array('gt',$id);
-            $next = self::where($map)->order("id asc")->field("id,name")->limit(1)->find();
-            if($next) $next->url = url('detail/index','mid=0&id='.$next->id);
-            $article->prev = $prev;
-            $article->next = $next;
-        }
         if($article){
             return $article;
         }else{
@@ -181,6 +168,11 @@ class Article extends ArticleModel
     }
 
     public function getArticleDetail($id){
-        $data  = ArticleModel::where('id',$id)->select();
+        $data  = ArticleModel::where('id',$id)->find();
+        if($data){
+            return $data;
+        }else{
+            return false;
+        }
     }
 }
