@@ -40,14 +40,14 @@
             {volist name='logs' id='log'}
             <tr>
                 <td>{$log.id}</td>
-                <td>{$log.action.title}</td>
+                <td>{$log.behavior}</td>
                 <td>{$log.member.realname}</td>
-                <td>{$log.action_ip}</td>
-                <td>{$log.create_time}</td>
+                <td>{$log.member_ip}</td>
+                <td>{$log.created_time}</td>
             </tr>
             {/volist}
         </table>
-        <div class="fr mt20">
+        <div class="fr mt20 f14">
             总记录数：{$logs->total()} {$logs->render()}
         </div>
     </div>

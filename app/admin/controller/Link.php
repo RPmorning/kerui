@@ -7,9 +7,11 @@
  */
 namespace app\admin\controller;
 
+use app\common\service\Category as CategoryService;
 use app\common\service\Link as LinkService;
 
 class Link extends Base{
+    protected $category;
     protected $link;
 
     public function __construct(LinkService $link){

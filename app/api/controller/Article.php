@@ -11,7 +11,7 @@ use app\common\model\Article as ArticleModel;
 use think\Response;
 
 class Article{
-    //获取新闻列表000
+    //获取新闻列表
     public function index(){
         $article = ArticleModel::where('status',1)->order('id','desc')->field('id,name,desc,cover,update_time')->paginate();
         if($article){
