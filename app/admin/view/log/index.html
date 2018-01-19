@@ -5,25 +5,12 @@
         <form class="layui-form">
             <div class="layui-form-item">
                 <div class="layui-input-inline">
-                    <input class="layui-input"
-                           type="text"
-                           placeholder="开始日期"
-                           autocomplete="off"
-                           name="start" id="start "
-                           onclick="layui.laydate({max:laydate.now(),elem: this})"
-                           value="{$search.s_time? $search.s_time: Date('Y-m-01')}">
+                    <input type="text" class="layui-input" id="test" name="test" placeholder="yyyy-MM-dd"
+                           value="{$search.s_time? $search.s_time: Date('Y-m-d')}"
+                    >
                 </div>
                 <div class="layui-input-inline">
-                    <input class="layui-input"
-                           type="text"
-                           placeholder="截止日期"
-                           autocomplete="off"
-                           name="end" id="end"
-                           onclick="layui.laydate({max:laydate.now(),elem: this})"
-                           value="{$search.e_time? $search.e_time: Date('Y-m-d')}">
-                </div>
-                <div class="layui-input-inline">
-                    <button type="submit" lay-submit="" lay-filter="demo2" class="layui-btn btn-secondary" >搜索</button>
+                    <a href="javascript:log.search();" class="layui-btn btn-secondary" >搜索</a>
                 </div>
             </div>
         </form>

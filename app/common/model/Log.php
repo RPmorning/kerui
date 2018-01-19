@@ -14,8 +14,6 @@ class Log extends Model
 
     protected $table = 'rp_logs';
 
-    // 开启自动写入时间戳字段 可以在数据库配置文件中添加全局设置
-    protected $autoWriteTimestamp = true;
 
     //create_date读取器
     protected function getCreatedTimeAttr($created_time){

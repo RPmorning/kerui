@@ -46,6 +46,7 @@ class Passport extends Common
             case -3 : $this->error("登录失败，验证码错误", url('login'));
                 break;
             default :
+                parent::saveLog(session('user_auth')['uid'],'登录');
                 $this->success("登录成功", "index/");
 //                Hook::listen("member_login", $uid); $this->success("登录成功", "index/");
         }

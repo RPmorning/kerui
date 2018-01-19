@@ -8,6 +8,7 @@
 namespace app\admin\controller;
 
 use app\common\service\Log as LogService;
+use think\Request;
 
 class Log extends Base
 {
@@ -21,7 +22,7 @@ class Log extends Base
     }
 
     public function index(){
-        $this->pageTitle = '日志管理';
+        $this->pageTitle = '日志列表';
         $this->assign('pageTitle',$this->pageTitle);
 
         $logs = $this->log->getLogs();
@@ -30,9 +31,21 @@ class Log extends Base
             $this->assign('logs',$logs);
         }
 
-//        dump(collection($logs)->toArray());
-//        die();
         return $this->fetch();
+    }
+
+    public function search(Request $request){
+        $res = $request->param();
+
+        $logs = $this->log->searchLogs($res);
+
+        if($logs){
+            $this->assign('logs',$logs);
+        }
+
+        $this->assign('search',$res);
+
+        return $this->fetch('index');
 
     }
 }

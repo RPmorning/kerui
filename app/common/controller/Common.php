@@ -8,6 +8,7 @@
 
 namespace app\common\controller;
 
+use app\common\model\Log;
 use think\Controller;
 use think\Request;
 use app\common\service\Config;
@@ -33,6 +34,16 @@ class Common extends Controller
 
         $this->assign('pageTitle', $this->pageTitle);
         $this->assign("siteOption", Config::getSiteOption());
+    }
+
+    public function saveLog($memberid=0,$behavior=''){
+        Log::create([
+            'member_id' => $memberid,
+            'member_ip' => request()->ip(),
+            'behavior'  => $behavior,
+            'created_time' => time(),
+        ]);
+
     }
 
     /*//空操作
