@@ -7,13 +7,11 @@
 namespace app\admin\controller;
 
 use app\common\service\Article as ArticleService;
-use app\common\service\Category as CategoryService;
 use think\Request;
 
 class Article extends Base
 {
     protected $article;
-    protected $category;
 
     public function __construct(ArticleService $article)
     {

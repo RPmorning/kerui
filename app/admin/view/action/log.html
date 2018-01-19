@@ -1,0 +1,55 @@
+{extend name="public/base" /}
+{block name="main-container"}
+<article class="main-log">
+    <div class="layui-tab-item layui-show">
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <div class="layui-input-inline">
+                    <input class="layui-input"
+                           type="text"
+                           placeholder="开始日期"
+                           autocomplete="off"
+                           name="start" id="start "
+                           onclick="layui.laydate({max:laydate.now(),elem: this})"
+                           value="{$search.s_time? $search.s_time: Date('Y-m-01')}">
+                </div>
+                <div class="layui-input-inline">
+                    <input class="layui-input"
+                           type="text"
+                           placeholder="截止日期"
+                           autocomplete="off"
+                           name="end" id="end"
+                           onclick="layui.laydate({max:laydate.now(),elem: this})"
+                           value="{$search.e_time? $search.e_time: Date('Y-m-d')}">
+                </div>
+                <div class="layui-input-inline">
+                    <button type="submit" lay-submit="" lay-filter="demo2" class="layui-btn btn-secondary" >搜索</button>
+                </div>
+            </div>
+        </form>
+        <table class="layui-table mt0">
+            <thead>
+            <tr>
+                <td>日志编号</td>
+                <td>行为名称</td>
+                <td>执行人</td>
+                <td>执行人IP</td>
+                <td>执行时间</td>
+            </tr>
+            </thead>
+            {volist name='logs' id='log'}
+            <tr>
+                <td>{$log.id}</td>
+                <td>{$log.action.title}</td>
+                <td>{$log.member.realname}</td>
+                <td>{$log.action_ip}</td>
+                <td>{$log.create_time}</td>
+            </tr>
+            {/volist}
+        </table>
+        <div class="fr mt20">
+            总记录数：{$logs->total()} {$logs->render()}
+        </div>
+    </div>
+</article>
+{/block}
