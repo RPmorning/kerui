@@ -1,5 +1,5 @@
-{css href="__LIB__/layui/css/layui.css,__ADMIN__/register.css" /}
-{js href="__LIB__/jquery/jquery.min.js, __LIB__/layui/layui.js, __ADMIN__/common.js,__ADMIN__/passport.js" /}
+{extend name="public/common" /}
+{block name="main-container"}
 <form class="layui-form" action="">
     <div class="layui-form-item">
         <label class="layui-form-label">用户名字</label>
@@ -69,3 +69,4 @@
         </div>
     </div>
 </form>
+{/block}

@@ -1,4 +1,4 @@
-html,body{background-color: #000 }
+html,body{background-color: #ffffff }
 /* -------------------------- 登 录 ---------------------------------*/
 #kr-passport{z-index: 1; height: 100vh; }
 #kr-passport .passport-login{ width: 400px; left: 50%; top: 50%; margin-top: -225px; margin-left: -200px;}
@@ -21,3 +21,10 @@ html,body{background-color: #000 }
 .refreshVerify{
     padding-bottom: 40px;
 }
+.layui-input{
+    width: 250px;
+}
+.layui-form-mid{
+    font-size: 1px;
+}
+
