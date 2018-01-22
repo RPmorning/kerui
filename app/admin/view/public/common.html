@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>{$pageTitle}|{$siteOption.site_name}</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    {css href="__LIB__/layui/css/layui.css,__ADMIN__/common/reset.css,__ADMIN__/common/common.css" /}
+
+    <link href="__ADMIN__/{$Think.CONTROLLER[0]}/{$Think.CONTROLLER[1]}.css" rel="stylesheet" type="text/css">
+    <!--<link rel="stylesheet" href="//at.alicdn.com/t/font_h78ixajgqoajor.css">老地址0713-->
+    <!--<link rel="stylesheet" href="http://at.alicdn.com/t/font_qwb9b1zykdwjyvi.css">-->
+    <link rel="stylesheet" href="__LIB__/iconfont/iconfont.css">
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    {assign name="controller" value="$Request.controller|strtolower" /}
+    {assign name="action" value="$Request.action|strtolower" /}
+</head>
+<body>
+
+{js href="__LIB__/jquery/jquery.min.js, __LIB__/layui/layui.js, __ADMIN__/common/common.js" /}
+<script type="text/javascript" src="/static/lib/jquery/jquery.cookie.js"></script>
+<script src="__ADMIN__/{$Think.CONTROLLER[0]}/{$Think.CONTROLLER[1]}.js"></script>
+{block name="js"}{/block}
+</body>
+
+</html>

@@ -28,7 +28,7 @@ layui.use(['form', 'layer', 'laydate'], function () {
         //     success: function (result) {
         //         if (result) {
         //             layer.msg('搜索成功！', {time: 2000}, function () {
-        //                 window.location.replace(logUrl+index.html);
+        //                 // window.location.replace(logUrl+index.html);
         //                 present.location.reload();
         //             });
         //         }

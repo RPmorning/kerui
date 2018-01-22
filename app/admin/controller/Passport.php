@@ -10,6 +10,7 @@ namespace app\admin\controller;
 use app\common\controller\Common;
 use app\common\service\Member;
 use think\Hook;
+use think\Request;
 use think\Session;
 
 class Passport extends Common
@@ -71,6 +72,25 @@ class Passport extends Common
             $this->success('退出成功！', url('login'));
         } else {
             $this->redirect('login');
+        }
+    }
+
+    //注册
+    public function register(){
+        return $this->fetch('register');
+    }
+
+    //保存注册信息
+    public function registerSave(Request $request,Member $member){
+        $res = $request->param();
+        $result = $this->validate($res,'Member.create');
+        if(true !== $result) {
+            return $this->error($result);
+        }
+        if($member->saveInfo($res)){
+            return $this->success('保存成功',url('login'));
+        }else{
+            return $this->error('保存失败');
         }
     }
 }

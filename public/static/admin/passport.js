@@ -1,6 +1,13 @@
-layui.use(['form'], function(){
+var passportUrl = "/admin/passport/",
+    passport = {};
+layui.use(['form','layer','laydate'], function(){
     var form = layui.form,
-        layer = layui.layer;
+        layer = layui.layer,
+        laydate = layui.laydate;
+
+    laydate.render({
+        elem: '#birthday'
+    })
 
 
    form.on('submit(login)', function(data){
@@ -34,6 +41,60 @@ layui.use(['form'], function(){
        }
         return false;
     });
+
+   passport.register = function () {
+
+       layer.open({
+           type: 2,
+           title: "用户信息",
+           closeBtn: 1, //不显示关闭按钮
+           shade: [0.5,'#000'],
+           area: ['500px', '700px'],
+           offset: '100px', //右下角弹出
+           // time: 2000, //2秒后自动关闭
+           anim: 1,
+           content: ['register.html', 'no'], //iframe的url，no代表不显示滚动条
+           // end: function(){ //此处用于演示
+           //     layer.open({
+           //         type: 2,
+           //         title: '很多时候，我们想最大化看，比如像这个页面。',
+           //         shadeClose: true,
+           //         shade: false,
+           //         maxmin: true, //开启最大化最小化按钮
+           //         area: ['893px', '600px'],
+           //         content: '//fly.layui.com/'
+           //     });
+           // }
+       });
+
+   };
+
+    //监听提交
+    form.on('submit(formDemo)', function(data){
+        if(data.field.username == '' || data.field.username == '请输入用户名'){
+            layer.msg('请输入用户名',{time:2000},function () {
+                return false;
+            })
+        } else{
+            $.post("/admin/passport/registerSave", data.field,  function (result) {
+                if (result.code == 1) {
+                    layer.msg(result.msg, {time: 2000}, function () {
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                        // layer.closeAll(); //关闭所有层
+                        // window.location.replace(result.url);
+                    });
+                } else {
+                    layer.msg(result.msg, {time:2000}, function () {
+                        return false;
+                    });
+                }
+            });
+        }
+        return false;
+    });
+
+
 });
 
 
