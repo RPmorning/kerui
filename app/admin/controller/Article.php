@@ -72,6 +72,7 @@ class Article extends Base
     public function save()
     {
         $data = $this->request->post();
+        $data['m_id'] = session('user_auth')['uid'];
         unset($data['file']);
         if(isset($data['covers'])){
             $data['cover'] = $data['covers'];

@@ -45,6 +45,7 @@ class Link extends Base{
      */
     public function save(){
         $data = $this->request->post();
+        $data['m_id'] = session('user_auth')['uid'];
         $res = $this->link->saveLink($data);
         if($res){
             return $this->success('保存成功',url('index'));

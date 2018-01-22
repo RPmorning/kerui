@@ -12,7 +12,9 @@ class Link extends LinkModel{
 
     //获取链接列表
     public function getLink($status = null){
+        $m_id = session('user_auth')['uid'];
         $map = [];
+        $map["m_id"] = $m_id;
         if($status) $map["status"] = $status;
         $link= parent::where($map)->paginate();
         if($link){

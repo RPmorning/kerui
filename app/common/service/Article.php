@@ -14,7 +14,9 @@ class Article extends ArticleModel
      */
     public function getArticles($categoryId = null, $status = -1)
     {
+        $m_id = session('user_auth')['uid'];
         $map = [];
+        $map["m_id"] = $m_id;
         if($categoryId) $map["category_id"] = $categoryId;
         if($status == 1) $map["status"] = $status;
         $articles = $this::with("member")->where($map)->field('content',true)->order("id desc")->paginate();
