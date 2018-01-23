@@ -21,10 +21,16 @@ html,body{background-color: #ffffff }
 .refreshVerify{
     padding-bottom: 40px;
 }
+
 .layui-input{
     width: 250px;
 }
 .layui-form-mid{
     font-size: 1px;
 }
+
+#kr-passport .passport-login .layui-input{
+    width: 100%;
+}
+
 

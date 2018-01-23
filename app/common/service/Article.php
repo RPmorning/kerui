@@ -14,9 +14,8 @@ class Article extends ArticleModel
      */
     public function getArticles($categoryId = null, $status = -1)
     {
-        $m_id = session('user_auth')['uid'];
         $map = [];
-        $map["m_id"] = $m_id;
+        $map["m_id"] = session('user_auth')['uid'];
         if($categoryId) $map["category_id"] = $categoryId;
         if($status == 1) $map["status"] = $status;
         $articles = $this::with("member")->where($map)->field('content',true)->order("id desc")->paginate();
@@ -174,6 +173,18 @@ class Article extends ArticleModel
         if($data){
             return $data;
         }else{
+            return false;
+        }
+    }
+
+    //分享文章 发表在大厅
+    public function shareArticle($id){
+        $result = $this->where('id', $id)
+            ->update(['tag' => 1,'share_time' => time()]);
+        if($result) {
+            return true;
+        }else{
+            $this->error = "发表失败";
             return false;
         }
     }

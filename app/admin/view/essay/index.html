@@ -1,0 +1,30 @@
+{extend name="public/base" /}
+{block name="main-container"}
+
+<essay class="main-essay">
+    <div class="layui-tab-item layui-show">
+        <div class="essay">
+            <ul class="essaylist">
+                {present name='essay'}
+                {volist name='essay' id='vo'}
+                <li class="essayli">
+                    <a href="#">
+                        <div class="img">
+                            <img src="{$vo.cover}" alt="干啥勒？咋没图片勒" class="images" />
+                        </div>
+                        <span class="words">{$vo.name}</span>
+                        <span class="">作者：{$vo.author}&nbsp&nbsp&nbsp 阅读量:{$vo.view}</span>
+                        <span class="">发布时间：{$vo.share_time}</span>
+                    </a>
+                </li>
+                {/volist}
+                {/present}
+            </ul>
+        </div>
+        <div class="fr mt20 record">
+            总记录数：{$essay->total()} {$essay->render()}
+        </div>
+    </div>
+</essay>
+
+{/block}

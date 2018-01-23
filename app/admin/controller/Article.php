@@ -189,4 +189,16 @@ class Article extends Base
         $this->assign('articleDetails',$data);
         return $this->fetch();
     }
+
+    //文章分享到大厅
+    public function share($id){
+        if(!empty($id)){
+            $data = $this->article->shareArticle($id);
+        }
+        if($data){
+            return $this->success("发表成功");
+        }else{
+            return $this->error("发表失败");
+        }
+    }
 }

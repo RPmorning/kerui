@@ -17,7 +17,7 @@ class Log extends Model
 
     //create_date读取器
     protected function getCreatedTimeAttr($created_time){
-        return date('Y-m-d h:i:s',$created_time);
+        return date('Y-m-d H:i:s',$created_time);
     }
 
     //定义关联

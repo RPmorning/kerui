@@ -17,14 +17,17 @@ class Article extends Model
 
     //create_date读取器
     protected function getCreateTimeAttr($crate_time){
-        return date('Y-m-d h:i:s',$crate_time);
+        return date('Y-m-d H:i:s',$crate_time);
+    }
+    protected function getShareTimeAttr($share_time){
+        return date('Y-m-d H:i:s',$share_time);
     }
     //update_date读取器
     protected function getUpdateTimeAttr($update_time){
         /*$dateYM = date('Y-m',$update_time);
         $dateD= date('d',$update_time);
         return $dateYM.$dateD;*/
-        return date('Y-m-d h:i:s',$update_time);
+        return date('Y-m-d H:i:s',$update_time);
     }
     //cover读取器
     protected function getCoverAttr($cover){

@@ -179,4 +179,15 @@ layui.use(['form','element','upload'], function() {
         // });
 
     }
+    article.share = function (id) {
+        var list = '';
+        list = id;
+        layer.confirm('确定发表', {icon: 3, title: '提示'}, function (index) {
+            $.post(articleUrl + 'share/id/' + list, function (result) {
+                layer.msg(result.msg, {time: 2000}, function () {
+                    window.location.reload();
+                });
+            });
+        });
+    }
 });
