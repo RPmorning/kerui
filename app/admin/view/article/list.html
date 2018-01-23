@@ -19,7 +19,7 @@
         <td width="6%">{$key+1}</td>
         <td>
             {if condition="$article.status == 1"}
-                <a href="javascript:void(0)" onclick="article.detailed('{$article.id}')" class="articleDetail" >
+                <a href="javascript:void(0)" onclick="common.detailed('{$article.id}','2')" class="articleDetail" >
                     {$article.name}
                 </a>
             {else /}{$article.name}

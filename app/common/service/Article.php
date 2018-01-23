@@ -168,8 +168,12 @@ class Article extends ArticleModel
         }
     }
 
-    public function getArticleDetail($id){
-        $data  = ArticleModel::where('id',$id)->find();
+    public function getArticleDetail($res){
+        if($res['type'] == 1){
+            $view = ArticleModel::where('id',$res['id'])->value('view');
+            ArticleModel::where('id',$res['id'])->update(['view' => $view+1]);
+        }
+        $data  = ArticleModel::where('id',$res['id'])->find();
         if($data){
             return $data;
         }else{

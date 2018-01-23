@@ -61,4 +61,18 @@ layui.use(['layer','element', 'form','upload'], function(){
     // element.on('nav(test)', function(elem){
     //
     // })
+
+    common.detailed = function (id,type) {
+        layer.open({
+            type: 2,
+            title: '文章详情',
+            area: ['800px', '650px'],
+            shadeClose: true,
+            maxmin: true,
+            content: '/admin/article/' + 'detailed/id/'+id+'/type/'+type, //这里content是一个普通的String
+            end: function () {
+                location.reload()
+            }
+        });
+    }
 });

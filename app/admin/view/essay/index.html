@@ -8,12 +8,12 @@
                 {present name='essay'}
                 {volist name='essay' id='vo'}
                 <li class="essayli">
-                    <a href="#">
+                    <a href="javascript:void(0)" onclick="common.detailed('{$vo.id}','1')" class="articleDetail" >
                         <div class="img">
                             <img src="{$vo.cover}" alt="干啥勒？咋没图片勒" class="images" />
                         </div>
                         <span class="words">{$vo.name}</span>
-                        <span class="">作者：{$vo.author}&nbsp&nbsp&nbsp 阅读量:{$vo.view}</span>
+                        <span class="" id="viewNumber">作者：{$vo.author}&nbsp&nbsp&nbsp 阅读量:{$vo.view}</span>
                         <span class="">发布时间：{$vo.share_time}</span>
                     </a>
                 </li>

@@ -183,7 +183,7 @@ class Article extends Base
      */
     public function detailed(Request $request){
         $res = $request->param();
-        $data = $this->article->getArticleDetail($res['id']);
+        $data = $this->article->getArticleDetail($res);
 //        dump($data);die();
 //        dump(collection($data)->toArray());die();
         $this->assign('articleDetails',$data);
@@ -195,7 +195,7 @@ class Article extends Base
         if(!empty($id)){
             $data = $this->article->shareArticle($id);
         }
-        if($data){
+        if(isset($data)){
             return $this->success("发表成功");
         }else{
             return $this->error("发表失败");
