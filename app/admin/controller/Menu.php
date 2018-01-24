@@ -41,7 +41,7 @@ class Menu extends Base
      */
     public function create($id)
     {
-        $this->assign('systemMenus', tree_select($this->menu->getMenus(0)));
+        $this->assign('systemMenus', tree_select($this->menu->getMenus(1)));
         $this->assign("pid", $id);
         $data = $this->fetch();
         return $this->success("新建子菜单", url("index"), $data);
@@ -58,7 +58,7 @@ class Menu extends Base
     {
         $menu =  $this->menu->getMenuById($id);
         if($menu){
-            $this->assign('systemMenus', tree_select($this->menu->getMenus(0)));
+            $this->assign('systemMenus', tree_select($this->menu->getMenus(1)));
             $this->assign("menu", $menu);
             $data = $this->fetch();
             return $this->success("编辑菜单", url("index"), $data);

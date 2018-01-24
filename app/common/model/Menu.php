@@ -21,9 +21,9 @@ class Menu extends Model
     /**
      * 获取所有菜单对应的权限。
      */
-    public function authRule()
-    {
-        return $this->hasOne('AuthRule', 'url', 'url');
-    }
+//    public function authRule()
+//    {
+//        return $this->hasOne('AuthRule', 'url', 'url');
+//    }
 
 }

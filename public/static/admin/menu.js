@@ -45,6 +45,7 @@ layui.use(['form'], function() {
     menu.create = function (id) {
 
         $.getJSON(menuUrl + "create/id/" + id, function (result) {
+            // console.log(result);
             layer.open({
                 type: 1,
                 title: result.msg,

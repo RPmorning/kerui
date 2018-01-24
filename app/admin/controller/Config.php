@@ -21,7 +21,7 @@ class Config extends Base
     /*展示网站设置页面*/
     public function index()
     {
-        $this->pageTitle = "个人配置";
+        $this->pageTitle = "个人介绍";
         $this->assign("pageTitle",$this->pageTitle);
         return $this->fetch();
     }

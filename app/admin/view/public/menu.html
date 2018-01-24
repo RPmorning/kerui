@@ -8,7 +8,7 @@
             <dl class="layui-nav-child">
                 {volist name="menu.child" id="submenu" empty="no data" }
                     <dd class="{$submenu.class|default=''}">
-                        <a href="{$submenu.url|url}" >
+                        <a href="{$submenu.url|url}" target="{$submenu.target}" >
                             <i class="iconfont f16 mr5 {$submenu.icon}"></i>{$submenu.name}
                             <i class="iconfont icon-yuandian"></i>
                         </a>

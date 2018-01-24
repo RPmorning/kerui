@@ -34,10 +34,10 @@ class Menu extends MenuModel
             $data["url"] = empty($data["param"]) ? $url : ($url  . "/" .$data["param"]);
             $data["level"] = $data["level"] + 1;
 
-            $ruleData = array(
-                "url" => $data["url"],
-                "name" => $data["name"]
-            );
+//            $ruleData = array(
+//                "url" => $data["url"],
+//                "name" => $data["name"]
+//            );
             try {
                 if(isset($data["id"])) { // 更新
                     $menu = $this::get($data["id"]);
@@ -51,7 +51,7 @@ class Menu extends MenuModel
                     }
                 }else{ // 新增
                     if($this->allowField(true)->save($data)){
-                        $this->authRule()->save($ruleData);
+//                        $this->authRule()->save($ruleData);
                         $this->error = "菜单新增成功";
                     }else{
                         $this->error = "菜单新增失败";

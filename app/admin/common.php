@@ -108,7 +108,7 @@ function get_menus($type = 1)
 {
     $map = [];
     if ($type) $map['status'] = 1;
-    $menus = Db::name('Menu')->field('name,id,pid,url,status,icon,sort,level')
+    $menus = Db::name('Menu')->field('name,id,pid,url,status,icon,sort,level,target')
         ->where($map)->order('sort asc, id asc')->select();
     return list_to_tree($menus);
 }

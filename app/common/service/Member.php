@@ -241,4 +241,14 @@ class Member extends MemberModel
             return false;
         }
     }
+
+    //得到用户信息
+    public function getUserInfo(){
+        $data = $this::get(session('user_auth')['uid']);
+        if($data){
+            return $data;
+        }else{
+            return false;
+        }
+    }
 }

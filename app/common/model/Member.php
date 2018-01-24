@@ -51,4 +51,19 @@ class Member extends Model
     {
         return $LastLoginTime ? date('Y-m-d', $LastLoginTime) : '未登录过';
     }
+    protected function getSexAttr($sex)
+    {
+       if($sex == 0){
+           $sex = '女';
+       }else{
+           $sex = '男';
+       }
+       return $sex;
+    }
+
+//    protected function getHeadUrlAttr($head_url){
+//        //return 'http://192.168.13.72/upload/'.$cover;
+//        $request = request();
+//        return $request->domain().'/upload/'.$head_url;
+//    }
 }
