@@ -60,6 +60,12 @@
             <a href="javascript:menu.icon();" class="layui-btn layui-btn-primary layui-btn-default ">选择图标</a>
         </div>
     </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">打开方式</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" name="target"   placeholder="_blank ?" value="{$menu.target}">
+        </div>
+    </div>
     <div class="layui-input-block">
         <input type="hidden" name="id" value="{$menu.id}">
         <a class="layui-btn save-btn layui-btn-normal" lay-filter="save" lay-submit>{:lang('save')}</a>
