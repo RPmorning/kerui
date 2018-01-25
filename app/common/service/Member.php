@@ -251,4 +251,17 @@ class Member extends MemberModel
             return false;
         }
     }
+
+    /**
+     * @param $res
+     * 更新用户头像
+     */
+    public function updateHeadUrl($res){
+        $data = $this::where('id',session('user_auth')['uid'])->update(['head_url'=>$res['head_url']]);
+        if($data){
+            return $data;
+        }else{
+            return false;
+        }
+    }
 }

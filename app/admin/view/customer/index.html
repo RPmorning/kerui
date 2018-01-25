@@ -3,10 +3,15 @@
 
 <customer class="main-customer">
     <div class="layui-tab-item layui-show">
+
         <div class="head" >
             {if condition="$userInfo.head_url eq '' "}
                 <button type="button" class="layui-btn" id="test1">
                     <i class="layui-icon">&#xe67c;</i>上传头像
+                    <div class="layui-upload-list">
+                        <p id="headText"></p>
+                        <input id="covers" name="head_url"  type="text" hidden>
+                    </div>
                 </button>
             {else /}
                 <div class="layui-anim layui-anim-rotate">
@@ -14,34 +19,54 @@
                 </div>
             {/if}
         </div>
+
         <hr class="layui-bg-green">
-        <div class="layui-tab layui-tab-card">
-            <ul class="layui-tab-title">
-                <li>个人帐号</li>
-                <li>个人姓名</li>
-                <li>个人性别</li>
-                <li>出生年月</li>
-                <li>个人职务</li>
-                <li>个人邮箱</li>
-                <li>移动电话</li>
-                <li>办公电话</li>
-                <li>家庭住址</li>
-                <li>最后登录时间</li>
-                <li>个人描述</li>
-            </ul>
-            <div class="layui-tab-content">
-                <div class="layui-tab-item">This is my account : {$userInfo.username}</div>
-                <div class="layui-tab-item">My name is {$userInfo.realname}. Hello everybody.</div>
-                <div class="layui-tab-item">{$userInfo.sex}</div>
-                <div class="layui-tab-item">This day {$userInfo.birthday} is my birthday,please remember it.</div>
-                <div class="layui-tab-item">{$userInfo.desc}</div>
-                <div class="layui-tab-item">{$userInfo.email}</div>
-                <div class="layui-tab-item">My telephone {$userInfo.mobile_phone}.call me baby.</div>
-                <div class="layui-tab-item">{$userInfo.office_phone}</div>
-                <div class="layui-tab-item">{$userInfo.address}</div>
-                <div class="layui-tab-item">{$userInfo.last_login_time}</div>
+
+        <div class="userInfo">
+            <div class="layui-tab layui-tab-card" id="card1">
+                <ul class="layui-tab-title">
+                    <li>个人帐号</li>
+                    <li>个人姓名</li>
+                    <li>个人性别</li>
+                    <li>个人邮箱</li>
+                    <li>个人职务</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item">This is my account : {$userInfo.username}</div>
+                    <div class="layui-tab-item">My name is {$userInfo.realname}. Hello everybody.</div>
+
+                    <div class="layui-tab-item">
+                        {if condition="$userInfo.sex eq '男' "}
+                            Good boy
+                        {else /}
+                            Beautiful girl
+                        {/if}
+                    </div>
+
+                    <div class="layui-tab-item">Welcome send message to me.  {$userInfo.email} </div>
+                    <div class="layui-tab-item">{$userInfo.position}</div>
+                </div>
+            </div>
+            <div class="layui-tab layui-tab-card" id="card2">
+                <ul class="layui-tab-title">
+                    <li>出生年月</li>
+                    <li>移动电话</li>
+                    <li>办公电话</li>
+                    <li>家庭住址</li>
+                    <li>最后登录时间</li>
+                    <li>个人描述</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item">This day "{$userInfo.birthday}" is my birthday,please remember it.</div>
+                    <div class="layui-tab-item">My telephone {$userInfo.mobile_phone}.call me baby.</div>
+                    <div class="layui-tab-item">{$userInfo.office_phone}</div>
+                    <div class="layui-tab-item">{$userInfo.address}  This is a warm place.</div>
+                    <div class="layui-tab-item">{$userInfo.last_login_time}</div>
+                    <div class="layui-tab-item">{$userInfo.desc}</div>
+                </div>
             </div>
         </div>
+
 
     </div>
 </customer>

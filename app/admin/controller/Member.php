@@ -8,6 +8,7 @@
 namespace app\admin\controller;
 
 use app\common\service\Member as MemberService;
+use think\Request;
 
 class Member extends Base
 {
@@ -169,6 +170,17 @@ class Member extends Base
         }else{
             return $this->error($this->member->getError());
         }
+    }
+
+    public function updateHeadUrl(Request $request){
+
+        $res = $request->param();
+        if($this->member->updateHeadUrl($res)){
+            return $this->success('上传成功！');
+        }else{
+            return $this->error($this->member->getError());
+        }
+
     }
 
 }

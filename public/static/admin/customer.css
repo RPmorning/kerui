@@ -3,8 +3,12 @@
     margin-top: 40px;
     left: 750px;
 }
+.layui-circle{
+    width: 150px;
+    height:150px;
+}
 .layui-tab-card{
-    width: 550px;
+    width: 600px;
     height: 150px;
     position:absolute;
     margin-top: 200px;
@@ -12,4 +16,13 @@
 .layui-tab-content{
     font-style: italic;
     font-size: 20px;
+}
+#card1,#card2{
+    background-color: #FFE4B5;
+}
+#card2{
+    margin-top: 350px;
+}
+.userInfo>.layui-tab-card>.layui-tab-title{
+    background-color: #C9C9C9;
 }
