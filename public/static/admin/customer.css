@@ -7,6 +7,11 @@
     width: 150px;
     height:150px;
 }
+.layui-anim>.layui-circle:hover{
+    transform: rotate(360deg);
+    transition: 4s;
+    -webkit-transform:rotate(360deg);
+}
 .layui-tab-card{
     width: 600px;
     height: 150px;

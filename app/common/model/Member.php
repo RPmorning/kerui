@@ -49,7 +49,7 @@ class Member extends Model
     }
     protected function getLastLoginTimeAttr($LastLoginTime)
     {
-        return $LastLoginTime ? date('Y-m-d', $LastLoginTime) : '未登录过';
+        return $LastLoginTime ? date('Y-m-d H:i:s', $LastLoginTime) : '未登录过';
     }
     protected function getSexAttr($sex)
     {
